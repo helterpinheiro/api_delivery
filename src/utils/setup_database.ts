@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const uri =
-  'mongodb+srv://helter:CylgJG8e76lkRuJH@cluster0.omqjyrh.mongodb.net/enafood?retryWrites=true&w=majority';
+const uri = process.env.URI_MONGO;
 
 mongoose
   .connect(uri)
@@ -15,27 +16,22 @@ mongoose
   });
 
 // Criando Schemas
-const clientePFSchema = new mongoose.Schema({
-  _id: { type: String, required: true },
-});
-
-const clientePJSchema = new mongoose.Schema({
-  _id: { type: String, required: true },
+const typeUserSchema = new mongoose.Schema({
+  name: { type: String, required: true },
 });
 
 // Criando modelos ClientePF e ClientePJ
-const ClientePF = mongoose.model('cliente_PF', clientePFSchema);
-const ClientePJ = mongoose.model('cliente_PJ', clientePJSchema);
+const typeUser = mongoose.model('type_user', typeUserSchema);
 
 // funcao que cria as tabelas dentro do banco de dados
 async function createCollections() {
   try {
-    await ClientePF.create({
-      _id: '1',
+    await typeUser.create({
+      name: 'Pessoa Física',
     });
 
-    await ClientePJ.create({
-      _id: '2',
+    await typeUser.create({
+      name: 'Pessoa Jurídica',
     });
 
     console.log('Documentos inseridos com sucesso.');

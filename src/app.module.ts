@@ -3,13 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ItemsModule } from './items/items.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
+import { config } from 'dotenv';
+config();
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://helter:CylgJG8e76lkRuJH@cluster0.omqjyrh.mongodb.net/enafood?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.URI_MONGO),
     ItemsModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

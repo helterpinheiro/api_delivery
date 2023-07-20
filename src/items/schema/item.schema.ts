@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 export const ItemSchema = new mongoose.Schema(
   {
-    nome: String,
+    name: String,
     description: String,
     brand: String,
   },
