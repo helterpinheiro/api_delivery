@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, isNotEmpty } from 'class-validator';
 
 export class CriarItemDTO {
   @IsString()
@@ -8,4 +8,8 @@ export class CriarItemDTO {
   @IsString()
   @IsNotEmpty()
   description: string;
+
+  @IsString()
+  @IsNotEmpty()
+  brand: string;
 }
