@@ -1,7 +1,7 @@
-import { IsString, IsNotEmpty, IsEmail, IsBoolean } from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail } from 'class-validator';
 import { TypeUser } from '../interfaces/type_user.interface';
 
-export class CriarUserDTO {
+export class UserSessionDTO {
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -17,16 +17,4 @@ export class CriarUserDTO {
   @IsString()
   @IsNotEmpty()
   password: string;
-
-  @IsString()
-  @IsNotEmpty()
-  address: string;
-
-  @IsString()
-  @IsNotEmpty()
-  doc: string;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  isDeleted: boolean;
 }
