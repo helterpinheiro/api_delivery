@@ -65,7 +65,7 @@ Ferramentas e Bibliotecas utilizadas
 ### Conectando ao banco de dados
 
 Utilizamos o MongoDB Altas, e para nos conectarmos é necessário ter uma conta no MongoDB para utilizar esse serviço. O MongoDB Atlas irá fornecer uma URI para se conectar ao banco de dados. Essa URI deve ser colocada em uma variável de ambiente, mais precisamente, dentro de um arquivo .ENV na variável:
-> URI_MONGO=
+> URI_MONGODB=
 
 ### Autenticação
 

@@ -8,7 +8,7 @@ config();
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.URI_MONGO),
+    MongooseModule.forRoot(process.env.URI_MONGODB),
     ItemsModule,
     AuthModule,
     PurchaseModule,
