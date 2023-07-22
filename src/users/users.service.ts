@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { CriarUserDTO } from './dtos/criar-user.dto';
 import { User } from './interfaces/user.interface';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +12,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { hash } from 'bcrypt';
 import { UserSessionDTO } from './dtos/user-session.dto';
+import { AtualizarUserDTO } from './dtos/atualizar-user.dto';
+import { DeleteUserDTO } from './dtos/delete-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -33,6 +40,40 @@ export class UsersService {
 
   async listAllUsers(): Promise<Array<User>> {
     return await this.userModel.find().populate('type_user').exec();
+  }
+
+  async listUserForId(_id: any): Promise<User> {
+    const user = await this.userModel.findOne({ _id }).exec();
+    if (!user) {
+      throw new NotFoundException(`User with id ${_id} not found!`);
+    }
+
+    return user;
+  }
+
+  async updateUser(
+    _id: any,
+    atualizarUserDTO: AtualizarUserDTO,
+  ): Promise<User> {
+    const user = await this.userModel.findOne({ _id }).exec();
+    if (!user) {
+      throw new NotFoundException(`User with id ${_id} not found!`);
+    }
+
+    return await this.userModel
+      .findOneAndUpdate({ _id }, { $set: atualizarUserDTO })
+      .exec();
+  }
+
+  async delteUser(_id: any, deleteUserDTO: DeleteUserDTO): Promise<User> {
+    const user = await this.userModel.findOne({ _id }).exec();
+    if (!user) {
+      throw new NotFoundException(`User with id ${_id} is not registred`);
+    }
+
+    return await this.userModel
+      .findOneAndUpdate({ _id }, { $set: deleteUserDTO })
+      .exec();
   }
 
   async session(email: string): Promise<UserSessionDTO> {
