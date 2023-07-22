@@ -66,26 +66,33 @@ Ferramentas e Bibliotecas utilizadas
 
 #### Banco de dados
 ##### MongoDB
-    O nosso banco de dados é o MongoDB, uma banco de dados NoSQL, de código aberto e altamente popular. Ele foi criado para lidar com uma grande variedade de dados, permitindo que os desenvolvedores armazenem e acessem informações de forma flexível e escalável.
+  O nosso banco de dados é o MongoDB, uma banco de dados NoSQL, de código aberto e altamente popular. Ele foi criado para lidar com uma grande variedade de dados, permitindo que os desenvolvedores armazenem e acessem informações de forma flexível e escalável.
   
 ##### MongoDB Altas
-    Utilizamos o MongoDB Atlas como alternativa ao banco de dados local, pois é um serviço de gerenciamento em nuvem fornecido pela MongoDB, INC.  Ele oferece uma plataforma hospedada e totalmente gerenciada para implantação, gerenciamento e escalabilidade de bancos de dados MongoDB.
+  Utilizamos o MongoDB Atlas como alternativa ao banco de dados local, pois é um serviço de gerenciamento em nuvem fornecido pela MongoDB, INC.  Ele oferece uma plataforma hospedada e totalmente gerenciada para implantação, gerenciamento e escalabilidade de bancos de dados MongoDB.
   
 ##### Mongoose
-    Utilizamos o Mongoose para ser a nossa ODM. Essa biblioteca permite a modelagem objetos do MongoDB em um ambiente NOde.JS. O mongoose permite que os desenvolvedores interajam com o banco de dados MongoDB usando uma sintaze simples e baseada em schemas.
+  Utilizamos o Mongoose para ser a nossa ODM. Essa biblioteca permite a modelagem objetos do MongoDB em um ambiente NOde.JS. O mongoose permite que os desenvolvedores interajam com o banco de dados MongoDB usando uma sintaze simples e baseada em schemas.
 
 #### Request handler
+
 ##### Nest.Js
-    O Nest.Js é um framework de desenvolvimento de aplicações web Node.Js. Possui uma arquitetura rosbusta e escalável. Possui uma arquitetura modular para organizar o código, portanto, deixa o código mais limpo e de fácil entendimento. O framework suporta injeção de dependência, isso permite que os componentes sejam facilmente testados e substituidos de forma isolada. O Nest.Js possui uma integração fácil com ferramentas como Swagger, permitindo gerar automaticamente uma documentação completa da api.
+  O Nest.Js é um framework de desenvolvimento de aplicações web Node.Js. Possui uma arquitetura rosbusta e escalável. Possui uma arquitetura modular para organizar o código, portanto, deixa o código mais limpo e de fácil entendimento. O framework suporta injeção de dependência, isso permite que os componentes sejam facilmente testados e substituidos de forma isolada. O Nest.Js possui uma integração fácil com ferramentas como Swagger, permitindo gerar automaticamente uma documentação completa da api.
 
 #### Containers
+
 ##### Docker
-    O Docker é uma plataforma de código aberto que permite criar, implantar e executar aplicativos em contêineres. Ele utiliza a virtualização a nível de sistema operacional para criar ambientes isolados, chamados contêineres, onde os aplicativos podem ser executados de forma consistente, independentemente do ambiente de hospedagem.
+  O Docker é uma plataforma de código aberto que permite criar, implantar e executar aplicativos em contêineres. Ele utiliza a virtualização a nível de sistema operacional para criar ambientes isolados, chamados contêineres, onde os aplicativos podem ser executados de forma consistente, independentemente do ambiente de hospedagem.
 
 #### Documentação
+
+#### Swagger
+  O Swagger fornece uma forma padronizada e legível por máquina para descrever APIs Restful. Ele nos ajuda a documentas endpoints, parâmetros, esquemas de dados e respostas relevantes da nossa API e nos ajuda a entender as respostas do código.
+
   Caso gostaria de saber como são as nossas rotas e como funcionam, está disponível uma documentação interativa, feita com a ferramenta Swagger.
-  Ela só pode ser acessada quando nossa aplicação estiver rodando e ela pode ser acessada pela rota 
+  Ela só pode ser acessada quando nossa aplicação estiver rodando e ela pode ser acessada pela rota.
   >(localhost:3333/docs)
+
 
 
 
