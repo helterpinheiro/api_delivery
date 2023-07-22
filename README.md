@@ -62,6 +62,21 @@ Ferramentas e Bibliotecas utilizadas
   Para verificar se a aplicação está rodando perfeitamente, é recomendado que se olhe o log do container da aplicação, e para isso você vai digitar no seu terminal o seguinte comando:
   > docker logs enafood -f
 
+### Conectando ao banco de dados
+
+Utilizamos o MongoDB Altas, e para nos conectarmos é necessário ter uma conta no MongoDB para utilizar esse serviço. O MongoDB Atlas irá fornecer uma URI para se conectar ao banco de dados. Essa URI deve ser colocada em uma variável de ambiente, mais precisamente, dentro de um arquivo .ENV na variável:
+> URI_MONGO=
+
+### Autenticação
+
+Nossa aplicação utiliza o JWT para segurança e autenticação de rotas, então é necessário que uma SECRET seja
+informada para ajuda na criptografia da nossa aplicação, então uma variável de ambiente chamada de SECRET dentro do arquivo .ENV deve conter uma frase, criptografada ou não, para ser utilizada na criptografia.
+> SECRET=
+
+Após o login, é retornado um TOKEN JWT para o usuário poder acessar as rotas, então é necessário antes de listar, criar e modificar usuários, itens e compras, colocar dentro do Header um Authorization com Bearer Token.
+> Authorization Bearer ==token jwt retornado para o usuário após o login===
+
+
 ### Ferramentas
 
 #### Banco de dados
