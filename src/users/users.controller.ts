@@ -8,6 +8,7 @@ import {
   Request,
   UseGuards,
   Param,
+  Put,
 } from '@nestjs/common';
 import { CriarUserDTO } from './dtos/criar-user.dto';
 import { User } from './interfaces/user.interface';
@@ -18,7 +19,9 @@ import { JwtAuthGuard } from 'src/auth/jwt.auth-guard';
 import { ValidacaoParametroPipe } from 'src/common/pipes/validacao-parametros.pipe';
 import { AtualizarUserDTO } from './dtos/atualizar-user.dto';
 import { DeleteUserDTO } from './dtos/delete-user.dto';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('api/v1/users')
 export class UsersController {
   constructor(
@@ -26,19 +29,30 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  @ApiOperation({
+    description:
+      'Endpoint responsável pela criação de novos usuários da plataforma.',
+  })
   @Post()
   @UsePipes(ValidationPipe)
-  async createItem(@Body() criarUserDTO: CriarUserDTO): Promise<User> {
+  async createUser(@Body() criarUserDTO: CriarUserDTO): Promise<User> {
     console.log(criarUserDTO);
     return await this.usersService.createUser(criarUserDTO);
   }
 
+  @ApiOperation({
+    description: 'Lista todos os usuários da plataforma',
+  })
   @UseGuards(JwtAuthGuard)
   @Get()
   async listAllUsers(): Promise<Array<User>> {
     return this.usersService.listAllUsers();
   }
 
+  @ApiOperation({
+    description:
+      'Lista usuários específicos da plataforma a partir de um id válido passado',
+  })
   @UseGuards(JwtAuthGuard)
   @Get('/:_id')
   async listUserForId(
@@ -47,6 +61,10 @@ export class UsersController {
     return this.usersService.listUserForId(_id);
   }
 
+  @ApiOperation({
+    description:
+      'Atualiza usuários específicos da plataforma a partir de um id válido passado',
+  })
   @UseGuards(JwtAuthGuard)
   @Get('/:_id')
   async updateUser(
@@ -56,8 +74,12 @@ export class UsersController {
     return this.usersService.updateUser(_id, atualizarUserDTO);
   }
 
+  @ApiOperation({
+    description:
+      'Atualiza usuários específicos da plataforma a partir de um id válido passado',
+  })
   @UseGuards(JwtAuthGuard)
-  @Get('/:_id')
+  @Put('/:_id')
   async deleteUser(
     @Body() deleteUserDTO: DeleteUserDTO,
     @Param('_id', ValidacaoParametroPipe) _id: string,
@@ -65,6 +87,9 @@ export class UsersController {
     return this.usersService.delteUser(_id, deleteUserDTO);
   }
   // eslint-disable-next-line prettier/prettier
+  @ApiOperation({
+    description: 'Endpoint responsável pelo login do usuário na plataforma.',
+  })
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
   async login(@Request() req) {
